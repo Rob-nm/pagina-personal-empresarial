@@ -1,0 +1,168 @@
+/* --- ESTILOS GENERALES --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #484848; /* Gris oscuro para mejor legibilidad */
+    line-height: 1.6; /* Espaciado entre líneas para que sea fácil de leer (UX) */
+}
+
+/* --- ENCABEZADO (HEADER) --- */
+header {
+    background-color: #FF5A5F; /* Color representativo de Airbnb */
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    max-width: 800px;
+    margin: 0 auto; /* Centra el bloque de texto */
+}
+
+/* Línea decorativa blanca debajo del nombre */
+.hero-text hr {
+    width: 60px;
+    border: 1px solid white;
+    margin: 20px auto;
+}
+
+/* --- SECCIÓN DE PROYECTOS (Uso de ID) --- */
+#proyectos {
+    padding: 50px 20px;
+    background-color: #f7f7f7; /* Fondo gris claro para resaltar las tarjetas */
+    text-align: center;
+}
+
+/* Contenedor con Flexbox (Punto 3 y 4 de la rúbrica) */
+.contenedor-cajas {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las cajas bajen en pantallas chicas */
+    justify-content: center; /* Centra las tarjetas */
+    gap: 25px; /* Espacio entre tarjetas */
+    margin-top: 30px;
+}
+
+/* Estilo de las Tarjetas (Cajas) */
+.caja {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Bordes redondeados tipo Airbnb */
+    width: 320px;
+    overflow: hidden;
+    transition: 0.3s; /* Animación suave para el hover */
+}
+
+/* Efecto visual al pasar el mouse (Mejora la experiencia de usuario UX) */
+.caja:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px); /* Se eleva un poquito */
+}
+
+.caja img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Ajusta la imagen sin que se estire feo */
+}
+
+.caja h3, .caja p {
+    padding: 10px 15px;
+    margin: 0;
+}
+
+.caja a {
+    display: inline-block;
+    padding: 15px;
+    color: #FF5A5F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- FORMULARIO DE CONTACTO (Uso de ID) --- */
+#contacto {
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 0 auto; /* Centra el formulario en la página */
+}
+
+#contacto h2 {
+    text-align: center;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* Asegura que el padding no agrande el ancho */
+}
+
+/* Estilo del Botón (Accesibilidad y UX) */
+button {
+    background-color: #FF5A5F;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e31c5f; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* --- PIE DE PÁGINA (FOOTER) --- */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.redes a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* --- DISEÑO RESPONSIVO (Punto 4 de la rúbrica) --- */
+/* Ajustes para celulares (pantallas menores a 600px) */
+@media (max-width: 600px) {
+    header {
+        padding: 40px 15px;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .contenedor-cajas {
+        flex-direction: column; /* Las tarjetas se ponen una sobre otra */
+        align-items: center;
+    }
+
+    .caja {
+        width: 100%; /* Las tarjetas ocupan todo el ancho del celular */
+        max-width: 350px;
+    }
+}
