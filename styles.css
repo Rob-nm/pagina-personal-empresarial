@@ -3,13 +3,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: #484848; /* Gris oscuro para mejor legibilidad */
-    line-height: 1.6; /* Espaciado entre líneas para que sea fácil de leer (UX) */
+    color: #484848; 
+    line-height: 1.6; 
 }
 
 /* --- ENCABEZADO (HEADER) --- */
 header {
-    background-color: #FF5A5F; /* Color representativo de Airbnb */
+    background-color: #FF5A5F; 
     color: white;
     padding: 60px 20px;
     text-align: center;
@@ -39,7 +39,7 @@ header {
     text-align: center;
 }
 
-/* Contenedor con Flexbox (Punto 3 y 4 de la rúbrica) */
+/* Contenedor con Flexbox */
 .contenedor-cajas {
     display: flex;
     flex-wrap: wrap; /* Permite que las cajas bajen en pantallas chicas */
@@ -52,22 +52,22 @@ header {
 .caja {
     background-color: white;
     border: 1px solid #ddd;
-    border-radius: 12px; /* Bordes redondeados tipo Airbnb */
+    border-radius: 12px; 
     width: 320px;
     overflow: hidden;
-    transition: 0.3s; /* Animación suave para el hover */
+    transition: 0.3s; 
 }
 
-/* Efecto visual al pasar el mouse (Mejora la experiencia de usuario UX) */
+/* Efecto visual al pasar el mouse  */
 .caja:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    transform: translateY(-5px); /* Se eleva un poquito */
+    transform: translateY(-5px); 
 }
 
 .caja img {
     width: 100%;
     height: 220px;
-    object-fit: cover; /* Ajusta la imagen sin que se estire feo */
+    object-fit: cover; /* Ajusta la imagen sin que se estire  */
 }
 
 .caja h3, .caja p {
@@ -83,7 +83,7 @@ header {
     font-weight: bold;
 }
 
-/* --- FORMULARIO DE CONTACTO (Uso de ID) --- */
+/* --- FORMULARIO DE CONTACTO  --- */
 #contacto {
     padding: 60px 20px;
     max-width: 600px;
@@ -112,7 +112,7 @@ input, textarea {
     box-sizing: border-box; /* Asegura que el padding no agrande el ancho */
 }
 
-/* Estilo del Botón (Accesibilidad y UX) */
+/* Estilo del Botón  */
 button {
     background-color: #FF5A5F;
     color: white;
@@ -127,7 +127,7 @@ button {
 }
 
 button:hover {
-    background-color: #e31c5f; /* Rojo más oscuro al pasar el mouse */
+    background-color: #e31c5f; 
 }
 
 /* --- PIE DE PÁGINA (FOOTER) --- */
