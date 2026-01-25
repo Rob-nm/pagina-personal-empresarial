@@ -5,8 +5,21 @@
     <title>Dashboard de Soporte</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .ticket-item { border: 1px solid #ddd; padding: 15px; margin-top: 10px; border-radius: 10px; display: flex; justify-content: space-between; }
-        .completado { background: #e8f5e9; text-decoration: line-through; opacity: 0.6; }
+        /* Estilos específicos para las tarjetas de reporte en el panel de control */
+        .ticket-item { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin-top: 10px; 
+            border-radius: 10px; 
+            display: flex; 
+            justify-content: space-between; 
+        }
+        /* Estilo visual para los reportes que ya fueron atendidos */
+        .completado { 
+            background: #e8f5e9; 
+            text-decoration: line-through; 
+            opacity: 0.6; 
+        }
     </style>
 </head>
 <body style="padding: 40px; background: #f7f7f7;">
@@ -14,30 +27,65 @@
         <h1>Gestión de Soporte Airbnb 🛠️</h1>
         <div id="lista-admin"></div>
     </div>
+
     <script>
+        /**
+         * FUNCIÓN PRINCIPAL: Dibuja la lista de reportes en la pantalla.
+         * Lee los datos guardados y crea el código visual para cada uno.
+         */
         function render() {
             const lista = document.getElementById('lista-admin');
+            // Traemos los reportes de la memoria del navegador
             const tickets = JSON.parse(localStorage.getItem('tickets_soporte')) || [];
+            
+            // Si no hay reportes, mostramos un mensaje, si hay, limpiamos el contenedor
             lista.innerHTML = tickets.length ? "" : "No hay tickets.";
+
+            // Por cada reporte en la lista, creamos una tarjeta con sus botones
             tickets.forEach(t => {
                 const div = document.createElement('div');
+                // Si el ticket está completado, se le aplica el estilo verde y tachado
                 div.className = `ticket-item ${t.estado === 'completado' ? 'completado' : ''}`;
-                div.innerHTML = `<div><strong>${t.nombre}</strong><p>${t.comentario}</p></div>
-                <div><button onclick="marcar(${t.id})">✔️</button><button onclick="borrar(${t.id})">🗑️</button></div>`;
+                
+                div.innerHTML = `
+                    <div>
+                        <strong>${t.nombre}</strong>
+                        <p>${t.comentario}</p>
+                    </div>
+                    <div>
+                        <button onclick="marcar(${t.id})">✔️</button>
+                        <button onclick="borrar(${t.id})">🗑️</button>
+                    </div>`;
                 lista.appendChild(div);
             });
         }
+
+        /**
+         * FUNCIÓN PARA MARCAR COMO RESUELTO:
+         * Cambia el estado del reporte de "pendiente" a "completado" y viceversa.
+         */
         function marcar(id) {
             let tks = JSON.parse(localStorage.getItem('tickets_soporte'));
+            // Buscamos el ticket por su ID y le cambiamos el estado
             tks = tks.map(t => t.id === id ? {...t, estado: t.estado==='pendiente'?'completado':'pendiente'} : t);
+            // Guardamos la lista actualizada y volvemos a dibujar
             localStorage.setItem('tickets_soporte', JSON.stringify(tks));
             render();
         }
+
+        /**
+         * FUNCIÓN PARA BORRAR:
+         * Elimina el reporte de la lista de forma permanente.
+         */
         function borrar(id) {
+            // Filtramos la lista para quitar el ticket que tenga el ID seleccionado
             let tks = JSON.parse(localStorage.getItem('tickets_soporte')).filter(t => t.id !== id);
+            // Guardamos la lista nueva y volvemos a dibujar
             localStorage.setItem('tickets_soporte', JSON.stringify(tks));
             render();
         }
+
+        // Ejecutamos la función al abrir la página para cargar los datos de inmediato
         render();
     </script>
 </body>

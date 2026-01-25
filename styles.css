@@ -1,60 +1,136 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Manrope', sans-serif; color: #222; background-color: #fff; line-height: 1.5; }
+/* =========================================
+   CONFIGURACIÓN GLOBAL
+   ========================================= */
 
-header { background: white; border-bottom: 1px solid #ebebeb; padding-bottom: 10px; position: sticky; top: 0; z-index: 100; }
-.header-top { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; }
-.logo-container { display: flex; align-items: center; gap: 8px; }
-.logo { color: #FF5A5F; font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+/* Reinicio de márgenes y rellenos para que todo empiece desde cero y sea uniforme en cualquier navegador */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
-.menu-principal a { text-decoration: none; color: #717171; margin: 0 15px; font-weight: 600; font-size: 0.95rem; }
-.menu-principal a.activo { color: #222; }
+/* Estilos base para el texto, colores de fondo y tipografía general */
+body { 
+    font-family: 'Manrope', sans-serif; 
+    color: #222; 
+    background-color: #fff; 
+    line-height: 1.5; 
+}
 
-.perfil-usuario { display: flex; align-items: center; gap: 12px; border: 1px solid #ddd; padding: 8px 12px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+/* =========================================
+   ENCABEZADO (HEADER)
+   ========================================= */
 
-/* Contenedor principal: ahora usa flex-grow para que los hijos ocupen el espacio */
+/* El encabezado se mantiene fijo arriba al navegar (sticky) y tiene una línea sutil inferior */
+header { 
+    background: white; 
+    border-bottom: 1px solid #ebebeb; 
+    padding-bottom: 10px; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+}
+
+/* Alineación de logo, menú y perfil en una sola línea con espacio entre ellos */
+.header-top { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 40px; 
+}
+
+/* Contenedor del logo con un pequeño espacio entre el icono y el texto */
+.logo-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+/* Estilo del texto del logo: color rosa característico y letra gruesa */
+.logo { 
+    color: #FF5A5F; 
+    font-size: 1.5rem; 
+    font-weight: 800; 
+    letter-spacing: -1px; 
+}
+
+/* Enlaces del menú central: sin subrayado y con color gris */
+.menu-principal a { 
+    text-decoration: none; 
+    color: #717171; 
+    margin: 0 15px; 
+    font-weight: 600; 
+    font-size: 0.95rem; 
+}
+
+/* Resalte para el enlace que está activo actualmente */
+.menu-principal a.activo { 
+    color: #222; 
+}
+
+/* Botón de perfil con bordes redondeados y estilo de "píldora" */
+.perfil-usuario { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    border: 1px solid #ddd; 
+    padding: 8px 12px; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    font-size: 0.9rem; 
+    font-weight: 600; 
+}
+
+/* =========================================
+   BARRA DE BÚSQUEDA (BUSCADOR GRANDE)
+   ========================================= */
+
+/* Caja principal del buscador con sombra suave y bordes muy redondeados */
 .buscador-grande {
     display: flex;
     align-items: center;
     background: white;
     border: 1px solid #ddd;
     border-radius: 40px;
-    width: 90%; /* Ocupa la mayor parte del ancho */
-    max-width: 850px; /* Evita que se estire demasiado en pantallas grandes */
+    width: 90%;
+    max-width: 850px;
     margin: 20px auto;
     padding: 8px 8px 8px 20px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
-/* Cada sección (Ubicación, fechas, viajeros) */
+/* Estilo para cada bloque interno (Ubicación, fechas, etc.) */
 .seccion-buscador {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Esto obliga a cada sección a medir lo mismo, arreglando lo "pegado" */
+    flex: 1; /* Distribuye el espacio de forma equitativa entre las secciones */
     padding: 0 16px;
 }
 
+/* Títulos pequeños arriba de los cuadros de texto */
 .seccion-buscador label {
     font-size: 12px;
     font-weight: 800;
     margin-bottom: 2px;
 }
 
+/* Cuadros de entrada de texto: sin bordes para que parezcan parte de la barra */
 .seccion-buscador input {
     border: none;
     outline: none;
     font-size: 14px;
-    width: 100%; /* El input usa todo el espacio de su sección */
+    width: 100%;
     background: transparent;
 }
 
-/* Las líneas verticales entre secciones */
+/* Pequeñas líneas grises que separan visualmente cada sección del buscador */
 .barra-divisora {
     width: 1px;
     height: 32px;
     background-color: #ddd;
 }
 
-/* El botón de la lupa */
+/* Botón circular rosa con la lupa blanca */
 .boton-buscar {
     background-color: #FF5A5F;
     color: white;
@@ -63,104 +139,247 @@ header { background: white; border-bottom: 1px solid #ebebeb; padding-bottom: 10
     height: 48px;
     border-radius: 50%;
     cursor: pointer;
-    flex-shrink: 0; /* Evita que el botón se aplaste */
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+/* =========================================
+   CONTENIDO DE ESTANCIAS (CARDS)
+   ========================================= */
+
+/* Espaciado general del contenido principal */
 main { padding: 30px 40px; }
+
 .categoria-estancias { margin-bottom: 45px; }
+
 .categoria-estancias h2 { margin-bottom: 20px; font-weight: 800; }
-.grid-7-columnas { display: grid; grid-template-columns: repeat(7, 1fr); gap: 18px; }
+
+/* Cuadrícula que organiza las fotos en 7 columnas iguales */
+.grid-7-columnas { 
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 18px; 
+}
+
+/* Efecto visual: la tarjeta crece un poco cuando pasas el ratón por encima */
 .card { cursor: pointer; transition: transform 0.2s; }
 .card:hover { transform: scale(1.02); }
-.imagen-contenedor { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; background-color: #f1f1f1; margin-bottom: 10px; }
-.card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Contenedor de la foto con bordes redondeados y recorte de imagen */
+.imagen-contenedor { 
+    border-radius: 12px; 
+    overflow: hidden; 
+    aspect-ratio: 1/1; 
+    background-color: #f1f1f1; 
+    margin-bottom: 10px; 
+}
+
+.card img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
 .info-card h3 { font-size: 0.95rem; }
 .info-card p { font-size: 0.85rem; color: #717171; }
 
-.contenedor-flotante { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-.btn-interrogacion { background-color: #222; color: white; border: none; padding: 14px 24px; border-radius: 30px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-.btn-admin-flotante { background-color: #fff; color: #222; border: 1px solid #222; padding: 10px 20px; border-radius: 30px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: inherit; }
+/* =========================================
+   SOPORTE Y BOTONES FLOTANTES
+   ========================================= */
 
-.panel-ayuda { background-color: white; width: 350px; border-radius: 24px; box-shadow: 0 12px 28px rgba(0,0,0,0.15); overflow: hidden; }
+/* Contenedor que agrupa los botones de ayuda en la esquina inferior derecha */
+.contenedor-flotante { 
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    z-index: 1000; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+    gap: 12px; 
+}
+
+/* Estilo para el botón de "¿Necesitas ayuda?" */
+.btn-interrogacion { 
+    background-color: #222; 
+    color: white; 
+    border: none; 
+    padding: 14px 24px; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+}
+
+/* Estilo para el botón de Gestión de Soporte (Panel de administración) */
+.btn-admin-flotante { 
+    background-color: #fff; 
+    color: #222; 
+    border: 1px solid #222; 
+    padding: 10px 20px; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+    font-family: inherit; 
+}
+
+/* Panel de formulario de ayuda que se abre al dar clic */
+.panel-ayuda { 
+    background-color: white; 
+    width: 350px; 
+    border-radius: 24px; 
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15); 
+    overflow: hidden; 
+}
+
+/* Clase especial para ocultar elementos mediante JavaScript */
 .oculto { display: none !important; }
-.cabecera-ayuda { background: #FF5A5F; color: white; padding: 20px; display: flex; justify-content: space-between; }
-#cerrar-ayuda { background: rgba(255,255,255,0.2); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; }
-.cuerpo-ayuda { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.cuerpo-ayuda input, .cuerpo-ayuda textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-family: inherit; outline: none; }
-.cuerpo-ayuda textarea { height: 100px; resize: none; }
-#btn-enviar-ticket { background-color: #222; color: white; padding: 14px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
-footer { background: #f7f7f7; padding: 40px 80px; border-top: 1px solid #ddd; margin-top: 50px; }
-.footer-columnas { display: flex; justify-content: space-between; }
-.columna a { display: block; text-decoration: none; color: #717171; font-size: 0.85rem; margin-bottom: 8px; }
-.footer-abajo { text-align: center; color: #717171; margin-top: 20px; font-size: 0.85rem; }
+/* Parte superior del panel de ayuda (color rosa) */
+.cabecera-ayuda { 
+    background: #FF5A5F; 
+    color: white; 
+    padding: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+}
 
-/* --- CORRECCIÓN DEFINITIVA PARA MÓVIL (No más scroll lateral) --- */
+/* Botón de cerrar (X) dentro del panel */
+#cerrar-ayuda { 
+    background: rgba(255,255,255,0.2); 
+    border: none; 
+    color: white; 
+    width: 28px; 
+    height: 28px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+}
 
-/* Ajuste global para evitar que nada se salga de la pantalla */
+/* Espaciado interno de los campos del formulario de soporte */
+.cuerpo-ayuda { 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+}
+
+.cuerpo-ayuda input, .cuerpo-ayuda textarea { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ddd; 
+    border-radius: 12px; 
+    font-family: inherit; 
+    outline: none; 
+}
+
+/* Botón de envío dentro del ticket de soporte */
+#btn-enviar-ticket { 
+    background-color: #222; 
+    color: white; 
+    padding: 14px; 
+    border: none; 
+    border-radius: 12px; 
+    font-weight: 700; 
+    cursor: pointer; 
+}
+
+/* =========================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================= */
+
+footer { 
+    background: #f7f7f7; 
+    padding: 40px 80px; 
+    border-top: 1px solid #ddd; 
+    margin-top: 50px; 
+}
+
+.footer-columnas { 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.columna a { 
+    display: block; 
+    text-decoration: none; 
+    color: #717171; 
+    font-size: 0.85rem; 
+    margin-bottom: 8px; 
+}
+
+.footer-abajo { 
+    text-align: center; 
+    color: #717171; 
+    margin-top: 20px; 
+    font-size: 0.85rem; 
+}
+
+/* =========================================
+   AJUSTES PARA DISPOSITIVOS MÓVILES (RESPONSIVE)
+   ========================================= */
+
+/* Evita que el contenido se desborde hacia los lados en pantallas pequeñas */
 html, body {
     overflow-x: hidden;
     width: 100%;
 }
 
-/* --- CORRECCIÓN DE SCROLL Y TAMAÑO EN MÓVIL --- */
-
 @media (max-width: 768px) {
-    /* 1. Cambiamos el Header para que NO sea fijo en móvil */
+    /* 1. El encabezado ya no se queda pegado para dejar ver las fotos al bajar */
     header {
-        position: relative !important; /* El buscador ya no se quedará pegado arriba */
+        position: relative !important; 
         padding-bottom: 0;
     }
 
-    /* 2. Reducimos el tamaño de la caja del buscador */
+    /* 2. El buscador se vuelve vertical para que quepa en el ancho del celular */
     .buscador-grande {
         display: flex;
         flex-direction: column; 
         width: 90% !important;
-        margin: 10px auto 20px auto; /* Añadimos margen abajo para separar de las fotos */
+        margin: 10px auto 20px auto;
         padding: 10px;
         height: auto;
         border-radius: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra más suave */
-        position: relative; /* Asegura que fluya con el contenido */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        position: relative;
     }
 
-    /* 3. Hacemos las secciones internas más compactas */
+    /* 3. Secciones del buscador más compactas para ahorrar espacio */
     .seccion-buscador {
         width: 100%;
-        padding: 6px 10px; /* Menos relleno para que no sea tan alta */
+        padding: 6px 10px;
         border-bottom: 1px solid #f0f0f0;
     }
 
     .seccion-buscador label {
-        font-size: 10px; /* Etiquetas más pequeñas */
+        font-size: 10px;
         margin-bottom: 0;
     }
 
     .seccion-buscador input {
         font-size: 13px;
-        padding: 2px 0;
     }
 
-    /* 4. El botón de la lupa más delgado */
+    /* 4. El botón de buscar ocupa todo el ancho disponible */
     .boton-buscar {
         width: 100%;
-        height: 40px; /* Altura reducida */
+        height: 40px;
         margin-top: 8px;
         border-radius: 10px;
         font-size: 18px;
     }
 
-    /* 5. Ajuste de imágenes para que empiecen justo después */
-    main {
-        padding: 10px 15px;
-        margin-top: 0;
-    }
-
+    /* 5. La cuadrícula de fotos cambia a solo 2 columnas para que se vean grandes */
     .grid-7-columnas {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px;
+    }
+
+    main {
+        padding: 10px 15px;
+        margin-top: 0;
     }
 }
