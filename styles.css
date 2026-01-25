@@ -1,168 +1,98 @@
-/* --- ESTILOS GENERALES --- */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #484848; 
-    line-height: 1.6; 
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Manrope', sans-serif; color: #222; background-color: #fff; line-height: 1.5; }
 
-/* --- ENCABEZADO (HEADER) --- */
-header {
-    background-color: #FF5A5F; 
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
-}
+header { background: white; border-bottom: 1px solid #ebebeb; padding-bottom: 10px; position: sticky; top: 0; z-index: 100; }
+.header-top { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; }
+.logo-container { display: flex; align-items: center; gap: 8px; }
+.logo { color: #FF5A5F; font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
 
-.logo {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
+.menu-principal a { text-decoration: none; color: #717171; margin: 0 15px; font-weight: 600; font-size: 0.95rem; }
+.menu-principal a.activo { color: #222; }
 
-.hero-text {
-    max-width: 800px;
-    margin: 0 auto; /* Centra el bloque de texto */
-}
+.perfil-usuario { display: flex; align-items: center; gap: 12px; border: 1px solid #ddd; padding: 8px 12px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
 
-/* Línea decorativa blanca debajo del nombre */
-.hero-text hr {
-    width: 60px;
-    border: 1px solid white;
-    margin: 20px auto;
-}
-
-/* --- SECCIÓN DE PROYECTOS (Uso de ID) --- */
-#proyectos {
-    padding: 50px 20px;
-    background-color: #f7f7f7; /* Fondo gris claro para resaltar las tarjetas */
-    text-align: center;
-}
-
-/* Contenedor con Flexbox */
-.contenedor-cajas {
+/* Contenedor principal: ahora usa flex-grow para que los hijos ocupen el espacio */
+.buscador-grande {
     display: flex;
-    flex-wrap: wrap; /* Permite que las cajas bajen en pantallas chicas */
-    justify-content: center; /* Centra las tarjetas */
-    gap: 25px; /* Espacio entre tarjetas */
-    margin-top: 30px;
-}
-
-/* Estilo de las Tarjetas (Cajas) */
-.caja {
-    background-color: white;
+    align-items: center;
+    background: white;
     border: 1px solid #ddd;
-    border-radius: 12px; 
-    width: 320px;
-    overflow: hidden;
-    transition: 0.3s; 
+    border-radius: 40px;
+    width: 90%; /* Ocupa la mayor parte del ancho */
+    max-width: 850px; /* Evita que se estire demasiado en pantallas grandes */
+    margin: 20px auto;
+    padding: 8px 8px 8px 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
-/* Efecto visual al pasar el mouse  */
-.caja:hover {
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    transform: translateY(-5px); 
+/* Cada sección (Ubicación, fechas, viajeros) */
+.seccion-buscador {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Esto obliga a cada sección a medir lo mismo, arreglando lo "pegado" */
+    padding: 0 16px;
 }
 
-.caja img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover; /* Ajusta la imagen sin que se estire  */
+.seccion-buscador label {
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 2px;
 }
 
-.caja h3, .caja p {
-    padding: 10px 15px;
-    margin: 0;
+.seccion-buscador input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%; /* El input usa todo el espacio de su sección */
+    background: transparent;
 }
 
-.caja a {
-    display: inline-block;
-    padding: 15px;
-    color: #FF5A5F;
-    text-decoration: none;
-    font-weight: bold;
+/* Las líneas verticales entre secciones */
+.barra-divisora {
+    width: 1px;
+    height: 32px;
+    background-color: #ddd;
 }
 
-/* --- FORMULARIO DE CONTACTO  --- */
-#contacto {
-    padding: 60px 20px;
-    max-width: 600px;
-    margin: 0 auto; /* Centra el formulario en la página */
-}
-
-#contacto h2 {
-    text-align: center;
-}
-
-.campo {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box; /* Asegura que el padding no agrande el ancho */
-}
-
-/* Estilo del Botón  */
-button {
+/* El botón de la lupa */
+.boton-buscar {
     background-color: #FF5A5F;
     color: white;
     border: none;
-    padding: 14px 25px;
-    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    width: 100%;
-    transition: background 0.3s;
+    flex-shrink: 0; /* Evita que el botón se aplaste */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+main { padding: 30px 40px; }
+.categoria-estancias { margin-bottom: 45px; }
+.categoria-estancias h2 { margin-bottom: 20px; font-weight: 800; }
+.grid-7-columnas { display: grid; grid-template-columns: repeat(7, 1fr); gap: 18px; }
+.card { cursor: pointer; transition: transform 0.2s; }
+.card:hover { transform: scale(1.02); }
+.imagen-contenedor { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; background-color: #f1f1f1; margin-bottom: 10px; }
+.card img { width: 100%; height: 100%; object-fit: cover; }
+.info-card h3 { font-size: 0.95rem; }
+.info-card p { font-size: 0.85rem; color: #717171; }
 
-button:hover {
-    background-color: #e31c5f; 
-}
+.contenedor-flotante { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.btn-interrogacion { background-color: #222; color: white; border: none; padding: 14px 24px; border-radius: 30px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.btn-admin-flotante { background-color: #fff; color: #222; border: 1px solid #222; padding: 10px 20px; border-radius: 30px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: inherit; }
 
-/* --- PIE DE PÁGINA (FOOTER) --- */
-footer {
-    background-color: #222;
-    color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 40px;
-}
+.panel-ayuda { background-color: white; width: 350px; border-radius: 24px; box-shadow: 0 12px 28px rgba(0,0,0,0.15); overflow: hidden; }
+.oculto { display: none !important; }
+.cabecera-ayuda { background: #FF5A5F; color: white; padding: 20px; display: flex; justify-content: space-between; }
+#cerrar-ayuda { background: rgba(255,255,255,0.2); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; }
+.cuerpo-ayuda { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.cuerpo-ayuda input, .cuerpo-ayuda textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-family: inherit; outline: none; }
+.cuerpo-ayuda textarea { height: 100px; resize: none; }
+#btn-enviar-ticket { background-color: #222; color: white; padding: 14px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
-.redes a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-/* --- DISEÑO RESPONSIVO (Punto 4 de la rúbrica) --- */
-/* Ajustes para celulares (pantallas menores a 600px) */
-@media (max-width: 600px) {
-    header {
-        padding: 40px 15px;
-    }
-
-    .logo {
-        font-size: 1.8rem;
-    }
-
-    .contenedor-cajas {
-        flex-direction: column; /* Las tarjetas se ponen una sobre otra */
-        align-items: center;
-    }
-
-    .caja {
-        width: 100%; /* Las tarjetas ocupan todo el ancho del celular */
-        max-width: 350px;
-    }
-}
+footer { background: #f7f7f7; padding: 40px 80px; border-top: 1px solid #ddd; margin-top: 50px; }
+.footer-columnas { display: flex; justify-content: space-between; }
+.columna a { display: block; text-decoration: none; color: #717171; font-size: 0.85rem; margin-bottom: 8px; }
+.footer-abajo { text-align: center; color: #717171; margin-top: 20px; font-size: 0.85rem; }

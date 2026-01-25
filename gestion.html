@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Soporte</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .ticket-item { border: 1px solid #ddd; padding: 15px; margin-top: 10px; border-radius: 10px; display: flex; justify-content: space-between; }
+        .completado { background: #e8f5e9; text-decoration: line-through; opacity: 0.6; }
+    </style>
+</head>
+<body style="padding: 40px; background: #f7f7f7;">
+    <div style="max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 20px;">
+        <h1>Gestión de Soporte Airbnb 🛠️</h1>
+        <div id="lista-admin"></div>
+    </div>
+    <script>
+        function render() {
+            const lista = document.getElementById('lista-admin');
+            const tickets = JSON.parse(localStorage.getItem('tickets_soporte')) || [];
+            lista.innerHTML = tickets.length ? "" : "No hay tickets.";
+            tickets.forEach(t => {
+                const div = document.createElement('div');
+                div.className = `ticket-item ${t.estado === 'completado' ? 'completado' : ''}`;
+                div.innerHTML = `<div><strong>${t.nombre}</strong><p>${t.comentario}</p></div>
+                <div><button onclick="marcar(${t.id})">✔️</button><button onclick="borrar(${t.id})">🗑️</button></div>`;
+                lista.appendChild(div);
+            });
+        }
+        function marcar(id) {
+            let tks = JSON.parse(localStorage.getItem('tickets_soporte'));
+            tks = tks.map(t => t.id === id ? {...t, estado: t.estado==='pendiente'?'completado':'pendiente'} : t);
+            localStorage.setItem('tickets_soporte', JSON.stringify(tks));
+            render();
+        }
+        function borrar(id) {
+            let tks = JSON.parse(localStorage.getItem('tickets_soporte')).filter(t => t.id !== id);
+            localStorage.setItem('tickets_soporte', JSON.stringify(tks));
+            render();
+        }
+        render();
+    </script>
+</body>
+</html>

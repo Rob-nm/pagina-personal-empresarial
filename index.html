@@ -3,90 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airbnb </title>
+    <title>Airbnb - Roberto Naredo</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
     <header>
-        <nav>
-            <h1 class="logo">Airbnb</h1>
-        </nav>
+        <div class="header-top">
+            <div class="logo-container">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width:32px; height:32px;">
+                    <path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 2.472.96 3.396l.01.415.001.228c0 4.062-2.877 6.478-6.357 6.478-2.224 0-4.556-1.258-6.709-3.386l-.257-.26-.172-.179h-.011l-.176.185c-2.044 2.1-4.392 3.42-6.72 3.42-3.481 0-6.358-2.416-6.358-6.478 0-4.061 2.877-6.478 6.357-6.478 2.224 0 4.556 1.258 6.709 3.386l.257.26.172.179h.011l.176-.185c2.044-2.1 4.392-3.42 6.72-3.42 3.481 0 6.358 2.416 6.358 6.478 0 4.061-2.877 6.478-6.357 6.478-2.224 0-4.556-1.258-6.709-3.386l-.257-.26-.172-.179h-.011l-.176.185c-2.044 2.1-4.392 3.42-6.72 3.42-3.481 0-6.358-2.416-6.358-6.478z" fill="#FF5A5F"></path>
+                </svg>
+                <h1 class="logo">airbnb</h1>
+            </div>
+            <nav class="menu-principal">
+                <a href="#" class="activo">Alojamientos</a>
+                <a href="#">Experiencias</a>
+                <a href="#">En línea</a>
+            </nav>
+            <div class="perfil-usuario">
+                <span>Hazte anfitrión</span>
+                <div class="icono-perfil">👤</div>
+            </div>
+        </div>
 
-        <div class="hero-text">
-            <p><strong>¿Qué hacemos?</strong> Somos una empresa del sector servicios que conecta a personas que tienen espacio disponible con viajeros que buscan un lugar donde hospedarse.</p>
-            
-            <hr> <h2>Nuestra Misión</h2>
-            <p>Crear un mundo donde cualquier persona pueda sentirse como en casa donde quiera que vaya.</p>
-            
-            <h2>Nuestra Visión</h2>
-            <p>Ser la comunidad de viajes más confiable y sostenible del mundo.</p>
+        <div class="buscador-grande">
+            <div class="seccion-buscador">
+                <label>Ubicación</label>
+                <input type="text" placeholder="Explorar destinos">
+            </div>
+            <div class="barra-divisora"></div>
+            <div class="seccion-buscador">
+                <label>Llegada</label>
+                <input type="date">
+            </div>
+            <div class="barra-divisora"></div>
+            <div class="seccion-buscador">
+                <label>Salida</label>
+                <input type="date">
+            </div>
+            <div class="barra-divisora"></div>
+            <div class="seccion-buscador">
+                <label>Viajeros</label>
+                <input type="number" placeholder="1" min="1">
+            </div>
+            <button class="boton-buscar">🔍</button>
         </div>
     </header>
 
     <main>
-        <section id="proyectos">
-            <h2>Alojamientos Destacados</h2>
-            
-            <div class="contenedor-cajas">
-                
-                <article class="caja">
-                    <img src="img/cabaña-airbnb.jpg" alt="Cabaña de madera rodeada de pinos y naturaleza">
-                    <h3>Cabaña en el Bosque</h3>
-                    <p>Un lugar tranquilo para desconectarse de la ciudad.</p>
-                    <a href="#">Ver detalles</a>
+        <section class="categoria-estancias">
+            <h2>Ciudades Increíbles</h2>
+            <div class="grid-7-columnas">
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/736x/60/05/e4/6005e478cde1d835141e4b959b100603.jpg"></div>
+                    <div class="info-card"><h3>CDMX</h3><p>Vista a Reforma</p><p class="precio"><strong>$1,250 MXN</strong></p></div>
                 </article>
-
-                <article class="caja">
-                    <img src="img/china-airbnb.jpg" alt="Interior de un loft moderno con luces de ciudad al fondo">
-                    <h3>Loft Moderno - China</h3>
-                    <p>Ubicado en el corazón de la ciudad, cerca de todo.</p>
-                    <a href="#">Ver detalles</a>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/736x/99/9b/07/999b07a78ac89300529eef0bf16db407.jpg"></div>
+                    <div class="info-card"><h3>Monterrey</h3><p>Valle Oriente</p><p class="precio"><strong>$2,100 MXN</strong></p></div>
                 </article>
-
-                <article class="caja">
-                    <img src="img/estonia-airbnb.jpg" alt="Casa tradicional en Estonia con diseño minimalista">
-                    <h3>Conoce Estonia</h3>
-                    <p>Experiencia única con todas las comodidades del hogar.</p>
-                    <a href="#">Ver detalles</a>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/736x/d3/a2/70/d3a270b4cad6f9bce17c18e381e7da39.jpg"></div>
+                    <div class="info-card"><h3>Guadalajara</h3><p>Zapopan centro</p><p class="precio"><strong>$1,850 MXN</strong></p></div>
                 </article>
-
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/1200x/65/07/8e/65078e113ee35e80e1027eaf3f04aa55.jpg"></div>
+                    <div class="info-card"><h3>Puebla</h3><p>Angelópolis</p><p class="precio"><strong>$950 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1562095241-8c6714fd4178?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Querétaro</h3><p>Los Arcos</p><p class="precio"><strong>$1,100 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/1200x/74/d0/fe/74d0fe24a5785eb7a8b9f44d55a7ba24.jpg"></div>
+                    <div class="info-card"><h3>Mérida</h3><p>Centro histórico</p><p class="precio"><strong>$1,300 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Oaxaca</h3><p>Barrio Jalatlaco</p><p class="precio"><strong>$1,400 MXN</strong></p></div>
+                </article>
             </div>
         </section>
 
-        <section id="contacto">
-            <h2>Contacto para Huéspedes</h2>
-            
-            <form action="#">
-                <div class="campo">
-                    <label for="nombre">Nombre completo:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre..." required>
-                </div>
+        <section class="categoria-estancias">
+            <h2>Frente al Mar</h2>
+            <div class="grid-7-columnas">
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1544750040-4ea9b8a27d38?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Cancún</h3><p>Zona Hotelera</p><p class="precio"><strong>$3,500 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1504730655501-24c39ac53f0e?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Tulum</h3><p>Playa Paraíso</p><p class="precio"><strong>$4,200 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1538964173425-93884d739596?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>P. Vallarta</h3><p>Conchas Chinas</p><p class="precio"><strong>$2,800 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/1200x/e6/b8/86/e6b886e9afb5b0c1677c4c5c696e2cde.jpg"></div>
+                    <div class="info-card"><h3>Mazatlán</h3><p>Nuevo Mazatlán</p><p class="precio"><strong>$1,900 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/1200x/9d/b7/3f/9db73fb85ca4b0edc042c9be7f0bec97.jpg"></div>
+                    <div class="info-card"><h3>Acapulco</h3><p>Diamante</p><p class="precio"><strong>$3,100 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/1200x/34/80/d0/3480d0ca3ee63fefd9eed67c999f631d.jpg"></div>
+                    <div class="info-card"><h3>Sayulita</h3><p>Nicho Nayarit</p><p class="precio"><strong>$1,600 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>P. del Carmen</h3><p>Coco Bongo Area</p><p class="precio"><strong>$2,400 MXN</strong></p></div>
+                </article>
+            </div>
+        </section>
 
-                <div class="campo">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
-                </div>
-
-                <div class="campo">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" placeholder="¿En qué podemos ayudarte?"></textarea>
-                </div>
-
-                <button type="submit">Enviar Mensaje</button>
-            </form>
+        <section class="categoria-estancias">
+            <h2>Experiencias Únicas</h2>
+            <div class="grid-7-columnas">
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/736x/d6/63/35/d66335b00091408418f30541997d340a.jpg"></div>
+                    <div class="info-card"><h3>Mazamitla</h3><p>Sierra del Tigre</p><p class="precio"><strong>$2,200 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Valle Bravo</h3><p>Frente al Lago</p><p class="precio"><strong>$3,800 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Tepoztlán</h3><p>Pie del Tepozteco</p><p class="precio"><strong>$1,700 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Arteaga</h3><p>Suiza Mexicana</p><p class="precio"><strong>$2,500 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Cuetzalan</h3><p>Pueblo Mágico</p><p class="precio"><strong>$1,100 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=400&fit=crop"></div>
+                    <div class="info-card"><h3>Tapalpa</h3><p>Cabaña rústica</p><p class="precio"><strong>$1,950 MXN</strong></p></div>
+                </article>
+                <article class="card">
+                    <div class="imagen-contenedor"><img src="https://i.pinimg.com/1200x/8c/94/ec/8c94ecc3748a037f3fa4b55eb3443c43.jpg"></div>
+                    <div class="info-card"><h3>Zacatlán</h3><p>Reloj Floral</p><p class="precio"><strong>$1,200 MXN</strong></p></div>
+                </article>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Airbnb  - Roberto Naredo 07149679</p>
-        <div class="redes">
-            <a href="#">Facebook</a> | 
-            <a href="#">Instagram</a> | 
-            <a href="#">X</a>
+    <div class="contenedor-flotante">
+        <div id="ventana-ayuda" class="panel-ayuda oculto">
+            <div class="cabecera-ayuda"><h4>Centro de Soporte</h4><button id="cerrar-ayuda">X</button></div>
+            <div class="cuerpo-ayuda">
+                <input type="text" id="input-nombre" placeholder="Tu Nombre">
+                <input type="email" id="input-correo" placeholder="Tu Correo">
+                <textarea id="input-comentario" maxlength="500" placeholder="¿Cómo te ayudamos?"></textarea>
+                <button id="btn-enviar-ticket">Enviar Ticket</button>
+            </div>
         </div>
+        <button id="btn-ayuda-flotante" class="btn-interrogacion">¿Necesitas ayuda? <span>❓</span></button>
+        <button onclick="abrirGestion()" class="btn-admin-flotante">Gestión de Soporte 🛠️</button>
+    </div>
+
+    <footer>
+        <div class="footer-columnas">
+            <div class="columna"><h4>Asistencia</h4><a href="#">Centro de ayuda</a><a href="#">Cancelación</a></div>
+            <div class="columna"><h4>Modo Anfitrión</h4><a href="#">Anfitriona tu casa</a><a href="#">AirCover</a></div>
+            <div class="columna"><h4>Airbnb</h4><a href="#">Mapa del sitio</a><a href="#">Carreras</a></div>
+        </div>
+        <hr>
+        <div class="footer-abajo"><p>&copy; 2026 Airbnb, Inc. - Tarea Roberto Naredo</p></div>
     </footer>
 
+    <script src="app.js"></script>
 </body>
 </html>
