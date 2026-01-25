@@ -105,102 +105,62 @@ html, body {
     width: 100%;
 }
 
+/* --- CORRECCIÓN DE SCROLL Y TAMAÑO EN MÓVIL --- */
+
 @media (max-width: 768px) {
-    /* 1. Forzamos el Header a no ser más ancho que la pantalla */
+    /* 1. Cambiamos el Header para que NO sea fijo en móvil */
     header {
-        width: 100%;
-        padding: 10px;
+        position: relative !important; /* El buscador ya no se quedará pegado arriba */
+        padding-bottom: 0;
     }
 
-    .header-top {
-        flex-direction: row; /* Mantenemos logo y perfil en la misma línea */
-        justify-content: space-between;
-        padding: 10px;
-    }
-
-    .menu-principal {
-        display: none; /* Quitamos los links centrales para ganar espacio */
-    }
-
-    /* 2. El Buscador: El principal culpable del scroll lateral */
+    /* 2. Reducimos el tamaño de la caja del buscador */
     .buscador-grande {
         display: flex;
-        flex-direction: column; /* Apilamos: Ubicación arriba, fechas abajo */
-        width: 92% !important; /* Forzamos a que no pase del 92% del ancho */
-        margin: 10px auto;
-        padding: 12px;
+        flex-direction: column; 
+        width: 90% !important;
+        margin: 10px auto 20px auto; /* Añadimos margen abajo para separar de las fotos */
+        padding: 10px;
         height: auto;
         border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra más suave */
+        position: relative; /* Asegura que fluya con el contenido */
     }
 
+    /* 3. Hacemos las secciones internas más compactas */
     .seccion-buscador {
         width: 100%;
-        padding: 8px 0;
-        border-bottom: 1px dotted #ccc;
-        flex: none; /* Quitamos el flex:1 que traía del desktop */
+        padding: 6px 10px; /* Menos relleno para que no sea tan alta */
+        border-bottom: 1px solid #f0f0f0;
     }
 
-    .seccion-buscador:last-of-type {
-        border-bottom: none;
+    .seccion-buscador label {
+        font-size: 10px; /* Etiquetas más pequeñas */
+        margin-bottom: 0;
     }
 
-    .barra-divisora {
-        display: none; /* Eliminamos líneas verticales */
+    .seccion-buscador input {
+        font-size: 13px;
+        padding: 2px 0;
     }
 
+    /* 4. El botón de la lupa más delgado */
     .boton-buscar {
         width: 100%;
-        margin-top: 10px;
-        border-radius: 8px;
+        height: 40px; /* Altura reducida */
+        margin-top: 8px;
+        border-radius: 10px;
+        font-size: 18px;
     }
 
-    /* 3. Las Tarjetas: Aquí arreglamos que no se encimen */
-    .grid-7-columnas {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr) !important; /* Siempre 2 columnas */
-        gap: 10px;
-        width: 100%;
-    }
-
+    /* 5. Ajuste de imágenes para que empiecen justo después */
     main {
-        padding: 15px;
-    }
-
-    .imagen-contenedor {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-    }
-
-    /* 4. El Footer */
-    .footer-columnas {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-
-    /* 5. Botones Flotantes (Soporte) */
-    .contenedor-flotante {
-        right: 10px;
-        bottom: 10px;
-    }
-
-    .btn-interrogacion, .btn-admin-flotante {
         padding: 10px 15px;
-        font-size: 12px;
+        margin-top: 0;
     }
 
-    .panel-ayuda {
-        width: 95vw; /* Casi todo el ancho */
-        position: fixed;
-        left: 2.5vw;
-        bottom: 70px;
-    }
-}
-
-/* Para celulares muy delgados */
-@media (max-width: 400px) {
     .grid-7-columnas {
-        grid-template-columns: 1fr !important; /* 1 sola tarjeta por fila */
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
     }
 }
