@@ -1,67 +1,72 @@
- Réplica de Airbnb – Página Web Estática
+Replica de Airbnb - Sistema de Gestión de Soporte 
+🧠 Descripción general
 
-Este proyecto es un **ejercicio académico** que consiste en la **réplica visual y funcional básica** de la página principal de Airbnb.  
-El objetivo es practicar **HTML, CSS y JavaScript**, así como la estructuración de una interfaz moderna y responsive.
+Este proyecto es un Sistema de Gestión de Soporte inspirado en el flujo de tickets de plataformas como Airbnb. Permite:
 
-Proyecto realizado por **Roberto Naredo**.
+* Crear tickets de soporte
+* Autenticarse como administrador
+* Visualizar tickets
+* Cambiar estatus (pendiente / completado)
+* Eliminar tickets (eliminación lógica)
+El sistema está dividido en Backend y Frontend, comunicándose mediante una API REST protegida con JWT.
 
+🛠️ Requisitos previos
 
+Antes de ejecutar el proyecto necesitas tener instalado:
+1. Node.js (versión recomendada LTS)
+    * Verificar instalación: node -v
+      
+2. npm (se instala junto con Node.js) npm -v
+3. 
+4. Un navegador web moderno (Chrome recomendado)
+5. (Opcional) Postman para pruebas de la API
 
- Objetivo del proyecto
+📂 Estructura del proyecto
+Proyecto/
+│
+├── Backend/
+│   ├── server.js
+│   ├── usuarios.json
+│   ├── tareas.json
+│
+├── Frontend/
+│   ├── index.html
+│   ├── login.html
+│   ├── login.js
+│   ├── styles.css
+│   ├── admin/
+│   │   ├── admin.html
+│   │   └── admin.js
 
-- Replicar la **interfaz principal de Airbnb**
-- Aplicar diseño moderno y responsive
-- Implementar interacción con **JavaScript puro**
-- Simular un **sistema de soporte con almacenamiento local**
+▶️ Cómo ejecutar el proyecto
+1️⃣ Iniciar el Backend
+Desde la carpeta Backend:
+npm install
+node server.js
+Si todo está correcto, verás un mensaje indicando que el servidor corre en:
+http://localhost:3000
 
-Tecnologías utilizadas
+2️⃣ Abrir el Frontend
+* Abre la carpeta Frontend
+* Abre index.html con Live Server o directamente desde el navegador
 
-- HTML5
-- CSS
-- JavaScript 
-- LocalStorage
-
-
-
-
-Estructura del proyecto
-
-│── index.html
-│── styles.css
-│── app.js
-│── gestion.html
-│── README.md
-
-
----
-
- Cómo ejecutar el proyecto
-
- Opción 1: Ejecución directa
-
-1. Abre la carpeta del proyecto  
-2. Haz doble clic en `index.html`  
-3. El proyecto se abrirá en tu navegador
-
- No requiere instalación adicional.
-
-Opción 2: Live Server 
-
-1. Abre el proyecto en **Visual Studio Code**
-2. Instala la extensión **Live Server**
-3. Click derecho en `index.html` → **Open with Live Server**
-
----
-
-Funcionalidades principales
-
-- Interfaz tipo Airbnb
-- Buscador principal
-- Cards de estancias
-- Diseño responsive
-- Sistema de soporte con tickets
-- Panel de administración de tickets
-
+🔐 Uso del sistema
+🧾 Crear un ticket
+* Desde index.html
+* Completa el formulario
+* El ticket se guarda automáticamente
+  
+🔑 Acceso administrador
+* Presiona Gestión de Soporte
+* Inicia sesión con un usuario registrado
+* email: admin@soporte.com
+* contraseña: 123456
+  
+🧰 Gestión de tickets
+Desde el panel de administrador puedes:
+* Ver tickets
+* Marcar como completados ✅
+* Eliminar tickets ❌ 
 
 
 
