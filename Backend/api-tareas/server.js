@@ -1,4 +1,5 @@
-console.log("🚨 server.js inició ejecución");
+const cors = require('cors');
+
 
 // ---------------- IMPORTS ----------------
 const express = require('express');
@@ -17,6 +18,7 @@ const RUTA_TAREAS = path.join(__dirname, 'tareas.json');
 const RUTA_USUARIOS = path.join(__dirname, 'usuarios.json');
 
 // ---------------- MIDDLEWARE ----------------
+app.use(cors());
 app.use(express.json());
 // -------------------- MIDDLEWARE AUTH --------------------
 function verificarToken(req, res, next) {
@@ -56,7 +58,6 @@ app.get('/', (req, res) => {
 
 // ---------------- TAREAS ----------------
 app.get('/tareas', verificarToken, async (req, res) => {
-
   try {
     const data = await fs.readFile(RUTA_TAREAS, 'utf-8');
     res.json(JSON.parse(data));
@@ -79,7 +80,11 @@ app.post('/tareas', verificarToken, async (req, res) => {
     const nueva = {
       id: Date.now(),
       titulo,
-      descripcion
+      descripcion,
+      fechaCreacion: new Date().toISOString(),
+      estatus: 'pendiente',
+      asignadoA: 'Sin asignar',
+      eliminado: false                  // para restaurar luego
     };
 
     tareas.push(nueva);
@@ -93,40 +98,43 @@ app.post('/tareas', verificarToken, async (req, res) => {
   }
 });
 
+
+// -------------------- ACTUALIZAR TAREA --------------------
 // -------------------- ACTUALIZAR TAREA --------------------
 app.put('/tareas/:id', verificarToken, async (req, res) => {
-    try {
-      const id = Number(req.params.id);
-      const { titulo, descripcion, estado } = req.body;
-  
-      const data = await fsPromises.readFile(RUTA_TAREAS, 'utf-8');
-      const tareas = JSON.parse(data);
-  
-      const index = tareas.findIndex(t => t.id === id);
-  
-      if (index === -1) {
-        return res.status(404).json({ mensaje: 'Tarea no encontrada' });
-      }
-  
-      tareas[index] = {
-        ...tareas[index],
-        titulo: titulo ?? tareas[index].titulo,
-        descripcion: descripcion ?? tareas[index].descripcion,
-        estado: estado ?? tareas[index].estado
-      };
-  
-      await fsPromises.writeFile(
-        RUTA_TAREAS,
-        JSON.stringify(tareas, null, 2)
-      );
-  
-      res.json(tareas[index]);
-  
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ mensaje: 'Error al actualizar la tarea' });
+  try {
+    const id = Number(req.params.id);
+    const { titulo, descripcion, estatus } = req.body;
+
+    const data = await fs.readFile(RUTA_TAREAS, 'utf-8');
+    const tareas = JSON.parse(data);
+
+    const index = tareas.findIndex(t => t.id === id);
+
+    if (index === -1) {
+      return res.status(404).json({ mensaje: 'Tarea no encontrada' });
     }
-  });
+
+    tareas[index] = {
+      ...tareas[index],
+      titulo: titulo ?? tareas[index].titulo,
+      descripcion: descripcion ?? tareas[index].descripcion,
+      estatus: estatus ?? tareas[index].estatus
+    };
+
+    await fs.writeFile(
+      RUTA_TAREAS,
+      JSON.stringify(tareas, null, 2)
+    );
+
+    res.json(tareas[index]);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al actualizar la tarea' });
+  }
+});
+
 
   // -------------------- ELIMINAR TAREA --------------------
 app.delete('/tareas/:id', verificarToken, async (req, res) => {
@@ -157,6 +165,59 @@ app.delete('/tareas/:id', verificarToken, async (req, res) => {
     } catch (error) {
       console.error(error);
       res.status(500).json({ mensaje: 'Error al eliminar la tarea' });
+    }
+  });
+  
+  app.put('/tareas/:id', verificarToken, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { estatus, asignadoA } = req.body;
+  
+      const data = await fs.readFile(RUTA_TAREAS, 'utf-8');
+      const tareas = JSON.parse(data);
+  
+      const index = tareas.findIndex(t => t.id == id);
+  
+      if (index === -1) {
+        return res.status(404).json({ mensaje: 'Tarea no encontrada' });
+      }
+  
+      tareas[index] = {
+        ...tareas[index],
+        estatus: estatus ?? tareas[index].estatus,
+        asignadoA: asignadoA ?? tareas[index].asignadoA
+      };
+  
+      await fs.writeFile(RUTA_TAREAS, JSON.stringify(tareas, null, 2));
+      res.json(tareas[index]);
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ mensaje: 'Error al actualizar tarea' });
+    }
+  });
+
+  app.delete('/tareas/:id', verificarToken, async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const data = await fs.readFile(RUTA_TAREAS, 'utf-8');
+      const tareas = JSON.parse(data);
+  
+      const index = tareas.findIndex(t => t.id == id);
+  
+      if (index === -1) {
+        return res.status(404).json({ mensaje: 'Tarea no encontrada' });
+      }
+  
+      tareas[index].eliminado = true;
+  
+      await fs.writeFile(RUTA_TAREAS, JSON.stringify(tareas, null, 2));
+      res.json({ mensaje: 'Tarea eliminada' });
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ mensaje: 'Error al eliminar tarea' });
     }
   });
   

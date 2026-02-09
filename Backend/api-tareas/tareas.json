@@ -1,13 +1,11 @@
 [
   {
-    "id": 1770501968456,
-    "titulo": "No encuentro alojamiento",
-    "descripcion": "El buscador no muestra resultados",
-    "estado": "pendiente"
-  },
-  {
-    "id": 1770512827983,
-    "titulo": "No encuentro alojamiento",
-    "descripcion": "El buscador no muestra resultados"
+    "id": 1770599603607,
+    "titulo": "Soporte - Otoniel Estrada",
+    "descripcion": "\nCorreo: oto@gmail.com\nMensaje: No puedo comprar pan aqui\n",
+    "fechaCreacion": "2026-02-09T01:13:23.607Z",
+    "estatus": "completado",
+    "asignadoA": "Sin asignar",
+    "eliminado": false
   }
 ]
