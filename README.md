@@ -41,6 +41,7 @@ Proyecto/
 ▶️ Cómo ejecutar el proyecto
 1️⃣ Iniciar el Backend
 Desde la carpeta Backend:
+cd backemd/api-tareas
 npm install
 node server.js
 Si todo está correcto, verás un mensaje indicando que el servidor corre en:
